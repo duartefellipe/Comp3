@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/selenium-java-3.141.59/libs/byte-buddy-1.8.15.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-3.141.59/libs/commons-exec-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-3.141.59/libs/guava-25.0-jre.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-3.141.59/libs/okhttp-3.11.0.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-3.141.59/libs/okio-1.14.0.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-3.141.59/client-combined-3.141.59-sources.jar"/>
+	<classpathentry kind="lib" path="lib/selenium-java-3.141.59/client-combined-3.141.59.jar"/>
+	<classpathentry kind="lib" path="lib/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.13-beta-2.jar"/>
+	<classpathentry kind="lib" path="lib/db-derby-10.10.1.1-bin/lib/derby.jar"/>
+	<classpathentry kind="lib" path="lib/db-derby-10.10.1.1-bin/lib/derby.war"/>
+	<classpathentry kind="lib" path="lib/db-derby-10.10.1.1-bin/lib/derbynet.jar"/>
+	<classpathentry kind="lib" path="lib/db-derby-10.10.1.1-bin/lib/derbyrun.jar"/>
+	<classpathentry kind="lib" path="lib/db-derby-10.10.1.1-bin/lib/derbytools.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-1.7.26/jul-to-slf4j-1.7.26.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-1.7.26/osgi-over-slf4j-1.7.26.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-1.7.26/slf4j-api-1.7.26.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-1.7.26/slf4j-jdk14-1.7.26.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-1.7.26/slf4j-migrator-1.7.26.jar"/>
+	<classpathentry kind="lib" path="lib/dbunit-2.6.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/duartefellipe/Dropbox/UFRRJ/Computação 3/Aulas/exemplos e códigos/workspace/aaaa/lib/db-derby-10.10.1.1-bin/lib/derby.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
