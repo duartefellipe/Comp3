@@ -151,7 +151,7 @@ public class WebDriverDemo {
 	
 	public static void main(String[] args) {
 		
-//		System.setProperty("webdriver.gecko.driver", "./lib/geckodriver-v0.24.0-win64/geckodriver.exe");
+//		System.setProperty("webdriver.gecko.driver", ".\\lib\\geckodriver-v0.24.0-win64\\geckodriver.exe");
 		System.setProperty("webdriver.gecko.driver", "./lib/geckodriver-v0.24.0-linux64/geckodriver");
 		
 		WebDriverDemo cd = new WebDriverDemo();
