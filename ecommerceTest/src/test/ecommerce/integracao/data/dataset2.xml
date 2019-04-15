@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dataset SYSTEM "dataset.dtd">
+<dataset>
+    <table name="product">
+        <column>description</column>
+        <column>productCost</column>
+        <column>profitMargin</column>
+        <row>
+            <value>biscoito da vaquinha</value>
+            <value>11.2</value>
+            <value>1.2</value>
+        </row>
+        <row>
+            <value>garrafa de agua</value>
+            <value>4.5</value>
+            <value>1.9</value>
+        </row>
+    </table>
+    <table name="sale">
+    	<column>date</column>
+        <row>
+        	<value>2019-01-01</value>
+        </row>
+     </table>   
+    <table name="sale">
+    	<column>date</column>
+        <row>
+        	<value>2019-02-13</value>
+        </row>
+     </table>   
+    <table name="saleitem">
+        <column>amount</column>
+        <column>saleid</column>
+        <column>productid</column>
+        <row>
+            <value>1</value>
+            <value>1</value>
+            <value>1</value>
+        </row>
+        <row>
+            <value>15</value>
+            <value>1</value>
+            <value>2</value>
+        </row>        
+     </table> 
+</dataset>
