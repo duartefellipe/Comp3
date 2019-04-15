@@ -26,6 +26,5 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/duartefellipe/Dropbox/UFRRJ/Computação 3/Aulas/exemplos e códigos/workspace/aaaa/lib/db-derby-10.10.1.1-bin/lib/derby.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
