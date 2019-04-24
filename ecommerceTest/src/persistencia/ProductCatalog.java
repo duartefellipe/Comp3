@@ -26,9 +26,11 @@ public class ProductCatalog implements InterfaceProductCatalog{
 			if (rs.next()) {
 				Double productCost = rs.getDouble(1);
 				Double productMargin = rs.getDouble(2);
+				con.close();
 				return new Product(description,productCost,productMargin);
 			}else {
 				System.out.println("a");
+				con.close();
 				return null;
 			}			
 		} catch (SQLException e) {
