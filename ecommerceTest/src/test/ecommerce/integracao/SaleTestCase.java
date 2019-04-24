@@ -1,11 +1,8 @@
 package test.ecommerce.integracao;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.MalformedURLException;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -79,29 +76,26 @@ public class SaleTestCase extends DatabaseTestCase{
 		statement.execute("DELETE from saleitem");
 		statement.closeOnCompletion();
 		
-		System.out.println("start");
-
 		try {
 			dbConnection.createStatement().execute("ALTER TABLE product ALTER COLUMN id RESTART WITH 1");
 			dbConnection.createStatement().execute("ALTER TABLE sale ALTER COLUMN id RESTART WITH 1");
-			dbConnection.createStatement().execute("ALTER TABLE saleitem ALTER COLUMN id RESTART WITH 1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		System.out.println("1");
 
 		dbConnection.createStatement().execute("ALTER TABLE saleitem ADD CONSTRAINT fk_sale FOREIGN KEY (saleId) REFERENCES Sale(id)");
 		dbConnection.createStatement().execute("ALTER TABLE saleitem ADD CONSTRAINT fk_product FOREIGN KEY (productId) REFERENCES Product(id)");
 		dbConnection.close();
 		aCon.close();
-		System.out.println("end!!!!!");
 		
 		return DatabaseOperation.NONE;
 	}
 	
 	@Test
 	public void testFindProduct() throws Exception{
+		ConnectionPool pool = ConnectionPool.GetInstance();
+		pool.createDataset();
+		
 		ProductCatalog catalog = new ProductCatalog();
 		String descriptionToSearch = "garrafa de agua";
 		Product product = catalog.findProduct(descriptionToSearch);
@@ -110,21 +104,6 @@ public class SaleTestCase extends DatabaseTestCase{
 		assertEquals(4.5, product.getProductCost(), 0);
 		assertEquals(4.5*1.9, product.getProductPrice(), 0);
 		
-//		Cliente.cadastrar(cliente);
-//		IDataSet dsAtual = getConnection().createDataSet();
-//		ITable tabelaAtual = dsAtual.getTable(“cliente”);
-//		assertEquals(1, tabelaAtual.rowCount());
+		pool.dropDataset();
 	}
-
-	
-//	@Test
-//	public void testaCadastrarCliente() throws Exception{
-//		Cliente cliente = new Cliente(“Luis”);
-//		Cliente.cadastrar(cliente);
-//		IDataSet dsAtual = getConnection().createDataSet();
-//		ITable tabelaAtual = dsAtual.getTable(“cliente”);
-//		assertEquals(1, tabelaAtual.rowCount());
-//		assertTrue(1==1);
-//	}
-
 }

@@ -29,7 +29,6 @@ public class ProductCatalog implements InterfaceProductCatalog{
 				con.close();
 				return new Product(description,productCost,productMargin);
 			}else {
-				System.out.println("a");
 				con.close();
 				return null;
 			}			
