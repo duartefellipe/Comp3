@@ -1,6 +1,6 @@
-package dominio;
+package domain;
 
-import persistencia.ProductCatalog;
+import persistence.ProductCatalog;
 
 public class SaleItem implements ItemInterface {
 

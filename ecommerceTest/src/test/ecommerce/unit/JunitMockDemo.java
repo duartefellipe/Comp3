@@ -1,10 +1,12 @@
-package test.ecommerce.unitario;
+package test.ecommerce.unit;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import dominio.AbstractSale;
-import dominio.Product;
-import test.ecommerce.unitario.mockClasses.MockSale;
+import domain.AbstractSale;
+import domain.Product;
+import test.ecommerce.unit.mockClasses.MockSale;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,19 +14,30 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * Suppose that Sale and SaleItem were not ready when this unit test was written.
  * @author Fellipe
  * 
- * testes unitarios considerando que Sale e SaleItem ainda não estavam prontas (Usando um mock object no lugar delas).
  *
  */
 public class JunitMockDemo {
 	
+	private AbstractSale currentSale;
+
+	@Before
+	public void setUp() {
+		this.currentSale = new MockSale(null);
+	}
+	
+	@After
+	public void tearDown() {
+		this.currentSale = null;
+	}
+	
 	@Test
 	public void testSaleDate() {
-		AbstractSale sale = new MockSale();
 		Calendar saleDate = Calendar.getInstance();
 		Calendar currentDate = Calendar.getInstance();
-		saleDate.setTime(sale.getDate());
+		saleDate.setTime(currentSale.getDate());
 		currentDate.setTime(new Date());
 
 		assertEquals(currentDate.get(Calendar.YEAR), saleDate.get(Calendar.YEAR));
@@ -34,7 +47,6 @@ public class JunitMockDemo {
 	
 	@Test
 	public void testAdd() throws Exception{
-		AbstractSale currentSale = new MockSale();
 		currentSale.add("biscoito da vaquinha", 10);
 		assertEquals(1, currentSale.getItemsCount(), 0);
 		
@@ -44,7 +56,6 @@ public class JunitMockDemo {
 	
 	@Test
 	public void testAddSameItem() throws Exception{
-		AbstractSale currentSale = new MockSale();
 		currentSale.add("biscoito da vaquinha", 10);
 		assertEquals(1, currentSale.getItemsCount(), 0);
 		
@@ -60,12 +71,12 @@ public class JunitMockDemo {
 	
 	@Test
 	public void testTotal() throws Exception{
-		AbstractSale currentSale = new MockSale();
 		currentSale.add("biscoito da vaquinha", 10);
-		// supor que biscoito da vaquina custa 5
+		// Suppose that "biscoito da vaquina" cost 5
 		assertEquals(50, currentSale.saleCost(), 0);
 
-		// supor que biscoito da vaquina custa 10 (coloquei um erro no mock object de proposito. O ideal era que o produto fosse o mock e nao o item)
+		// Suppose that "biscoito da vaquina" cost 10
+		// this test fails to show what junit do when a unit test fails  
 		currentSale.add("goiabada", 2);
 		assertEquals(70, currentSale.saleCost(), 0);		
 	}

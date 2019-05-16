@@ -1,4 +1,4 @@
-package dominio;
+package domain;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -8,11 +8,17 @@ public abstract class AbstractSale{
 
 	protected Date date;
 	private Set<ItemInterface> saleItens;
+	private Client client;
 	
 	/**  the Sale is the Item factory
 	 * @throws Exception 
 	 */
 	protected abstract ItemInterface itemFactory(String description, int amount) throws Exception;
+	
+	public AbstractSale(Client saleClient) {
+		this.client = saleClient;
+		this.date = new Date();
+	}
 	
 	public void add(String description, int amount) throws Exception{
 		if (saleItens == null) {

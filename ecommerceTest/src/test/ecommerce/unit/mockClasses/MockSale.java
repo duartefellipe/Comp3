@@ -1,15 +1,13 @@
-package test.ecommerce.unitario.mockClasses;
+package test.ecommerce.unit.mockClasses;
 
-import dominio.ItemInterface;
-
-import java.util.Date;
-
-import dominio.AbstractSale;
+import domain.AbstractSale;
+import domain.Client;
+import domain.ItemInterface;
 
 public class MockSale extends AbstractSale {
 	
-	public MockSale() {
-		date = new Date();
+	public MockSale(Client saleClient) {
+		super(saleClient);
 	}
 
 	@Override

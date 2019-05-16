@@ -1,14 +1,12 @@
-package persistencia;
+package persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.derby.impl.sql.catalog.SYSPERMSRowFactory;
-
-import dominio.InterfaceProductCatalog;
-import dominio.Product;
+import domain.InterfaceProductCatalog;
+import domain.Product;
 
 public class ProductCatalog implements InterfaceProductCatalog{
 	

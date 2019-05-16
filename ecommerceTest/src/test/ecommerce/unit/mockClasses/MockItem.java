@@ -1,6 +1,6 @@
-package test.ecommerce.unitario.mockClasses;
+package test.ecommerce.unit.mockClasses;
 
-import dominio.ItemInterface;
+import domain.ItemInterface;
 
 public class MockItem implements ItemInterface {
 

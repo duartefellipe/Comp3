@@ -1,4 +1,4 @@
-package dominio;
+package domain;
 
 public class Product {
 	private String description;

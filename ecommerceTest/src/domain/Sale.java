@@ -1,15 +1,12 @@
-package dominio;
+package domain;
 
-import dominio.ItemInterface;
-
-import java.util.Date;
-
-import dominio.AbstractSale;
+import domain.AbstractSale;
+import domain.ItemInterface;
 
 public class Sale extends AbstractSale {
 
-	public Sale() {
-		date = new Date();
+	public Sale(Client saleClient) {
+		super(saleClient);
 	}
 
 	@Override

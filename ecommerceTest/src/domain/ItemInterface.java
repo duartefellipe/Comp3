@@ -1,4 +1,4 @@
-package dominio;
+package domain;
 
 public interface ItemInterface {
 	public abstract double itemCost();
