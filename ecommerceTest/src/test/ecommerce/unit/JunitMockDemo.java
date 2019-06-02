@@ -65,17 +65,15 @@ public class JunitMockDemo {
 		currentSale.add("biscoito da vaquinha", 3);
 		assertEquals(2, currentSale.getItemsCount(), 0);
 
-		currentSale.add("bala", 50);
+		currentSale.add("garrafa de agua", 50);
 		assertEquals(3, currentSale.getItemsCount(), 0);	
 	}
 	
 	@Test
 	public void testTotal() throws Exception{
 		currentSale.add("biscoito da vaquinha", 10);
-		// Suppose that "biscoito da vaquina" cost 5
-		assertEquals(50, currentSale.saleCost(), 0);
+		assertEquals(60, currentSale.saleCost(), 0);
 
-		// Suppose that "biscoito da vaquina" cost 10
 		// this test fails to show what junit do when a unit test fails  
 		currentSale.add("goiabada", 2);
 		assertEquals(70, currentSale.saleCost(), 0);		

@@ -1,7 +1,6 @@
 package test.ecommerce.integration;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,13 +11,10 @@ import org.dbunit.DatabaseTestCase;
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
-import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.XmlDataSet;
 import org.dbunit.operation.DatabaseOperation;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import domain.AbstractSale;
@@ -43,10 +39,12 @@ public class SaleTestCase extends DatabaseTestCase{
 		return new DatabaseConnection(conn);
 	}
 	
-	protected IDataSet getDataSet() throws DataSetException, FileNotFoundException {
-		return new XmlDataSet(new FileInputStream("./src/test/ecommerce/integracao/data/dataset2.xml"));
-}
+	@Override
+	protected IDataSet getDataSet() throws Exception {
+		return new XmlDataSet(new FileInputStream("./src/test/ecommerce/integration/data/dataset2.xml"));
+	}
 	
+	@Override
 	protected DatabaseOperation getSetUpOperation() throws DatabaseUnitException, SQLException {
 		IDatabaseConnection aCon = getConnection();
 		Connection dbConnection = aCon.getConnection();
@@ -54,9 +52,12 @@ public class SaleTestCase extends DatabaseTestCase{
 		dbConnection.createStatement().execute("ALTER TABLE saleitem DROP FOREIGN KEY fk_product");
 		dbConnection.close();
 		aCon.close();
+		this.currentSale = new Sale(new Client("first street", 1, "second house", "any", new int[5], new int[3]));
+		
 		return DatabaseOperation.CLEAN_INSERT;
 	}
 	
+	@Override
 	protected DatabaseOperation getTearDownOperation() throws SQLException, DatabaseUnitException{
 		IDatabaseConnection aCon = getConnection();
 		IDataSet ds = aCon.createDataSet();
@@ -102,19 +103,9 @@ public class SaleTestCase extends DatabaseTestCase{
 		dbConnection.close();
 		aCon.close();
 		
-		return DatabaseOperation.NONE;
-	}
-	
-	@Before
-	public void setUp() {
-		this.currentSale = new Sale(new Client("first street", 1, "second house", "any", new int[5], new int[3]));
-		System.out.println("before");
-	}
-	
-	@After
-	public void tearDown() {
 		this.currentSale = null;
-		System.out.println("after");
+		
+		return DatabaseOperation.NONE;
 	}
 	
 	@Test
@@ -161,19 +152,15 @@ public class SaleTestCase extends DatabaseTestCase{
 		currentSale.add("biscoito da vaquinha", 3);
 		assertEquals(2, currentSale.getItemsCount(), 0);
 
-		currentSale.add("bala", 50);
+		currentSale.add("garrafa de agua", 50);
 		assertEquals(3, currentSale.getItemsCount(), 0);	
 	}
 	
 	@Test
 	public void testTotal() throws Exception{
 		currentSale.add("biscoito da vaquinha", 10);
-		// Suppose that "biscoito da vaquina" cost 5
-		assertEquals(50, currentSale.saleCost(), 0);
-
-		// Suppose that "biscoito da vaquina" cost 10
-		// this test fails to show what junit do when a unit test fails  
+		assertEquals(112, currentSale.saleCost(), 0);
 		currentSale.add("goiabada", 2);
-		assertEquals(70, currentSale.saleCost(), 0);		
+		assertEquals(117, currentSale.saleCost(), 0);		
 	}
 }

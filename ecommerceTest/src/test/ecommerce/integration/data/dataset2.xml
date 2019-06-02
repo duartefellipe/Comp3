@@ -15,6 +15,11 @@
             <value>4.5</value>
             <value>1.9</value>
         </row>
+        <row>
+            <value>goiabada</value>
+            <value>2.5</value>
+            <value>1.1</value>
+        </row>
     </table>
     <table name="sale">
     	<column>date</column>
